@@ -9,12 +9,14 @@ pd.set_option("expand_frame_repr", False)
 
 def remove_tz_from_dataframe(df_in):
     df = df_in.copy()
-    col_times = [ col for col in df.columns if any([isinstance(x, pd.Timestamp) for x in df[col]])]
+    col_times = [
+        col for col in df.columns if any([isinstance(x, pd.Timestamp) for x in df[col]])
+    ]
     for col in col_times:
-        df[col] = pd.to_datetime(
-            df[col]) 
-        df[col] = df[col].dt.tz_localize(None) 
+        df[col] = pd.to_datetime(df[col])
+        df[col] = df[col].dt.tz_localize(None)
     return df
+
 
 util.startLoop()
 

@@ -15,20 +15,24 @@ ib = IB()
 ib.connect("127.0.0.1", 7497, clientId=12)
 
 
-contract = Stock('MSFT')
+contract = Stock("MSFT", "SMART", "USD")
 
 cds = ib.reqContractDetails(contract)
 
 print(cds)
 
-order = LimitOrder('BUY', 20000, 1.11)
 
-#trade = ib.placeOrder(contract, order)
+# action, quantity, price
+order = LimitOrder("BUY", 100, 10.0)
 
-sleep(5)
+limitTrade = ib.placeOrder(contract, order)
+
+print(limitTrade)
+
+# wait 15 seconds
+ib.sleep(15)
 
 print(limitTrade.log)
-
 
 
 ib.disconnect()
