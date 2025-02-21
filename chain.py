@@ -18,6 +18,8 @@ def remove_tz_from_dataframe(df_in):
 
 util.startLoop()
 
+# quelle: https://nbviewer.org/github/ib-api-reloaded/ib_async/blob/main/notebooks/option_chain.ipynb
+
 
 ib = IB()
 ib.connect("127.0.0.1", 7497, clientId=12)
@@ -71,6 +73,6 @@ tickers_df = util.df(tickers)
 
 tickers_df = remove_tz_from_dataframe(tickers_df)
 
-tickers_df.to_excel("output.xlsx")
+tickers_df.to_excel("chain.xlsx")
 
 ib.disconnect()
