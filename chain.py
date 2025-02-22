@@ -6,6 +6,8 @@ pd.set_option("display.max_columns", None)
 pd.set_option("display.max_rows", None)
 pd.set_option("expand_frame_repr", False)
 
+from pprint import pprint
+
 
 def remove_tz_from_dataframe(df_in):
     df = df_in.copy()
@@ -29,20 +31,30 @@ ib.connect("127.0.0.1", 7497, clientId=12)
 spx = Index("SPX", "CBOE")
 ib.qualifyContracts(spx)
 
-print(spx)
+pprint(spx)
+
+pprint("--------------------------")
 
 ib.reqMarketDataType(4)
 
 [ticker] = ib.reqTickers(spx)
-print(ticker)
+pprint(ticker)
+
+pprint("--------------------------")
+
+
 spxValue = ticker.close
 print("price: " + str(spxValue))
+
+pprint("--------------------------")
+
 
 chains = ib.reqSecDefOptParams(spx.symbol, "", spx.secType, spx.conId)
 
 chains_df = util.df(chains)
-
-print(chains_df)
+pprint("chains")
+pprint(chains_)
+pprint("--------------------------")
 
 chain = next(c for c in chains if c.tradingClass == "SPXW" and c.exchange == "SMART")
 
