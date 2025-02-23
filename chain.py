@@ -76,12 +76,12 @@ contracts = [
 contracts = ib.qualifyContracts(*contracts)
 
 print("contracts: " + str(len(contracts)))
-
+pprint("--------------------------")
 
 tickers = ib.reqTickers(*contracts)
 
 print(tickers[0].modelGreeks)
-
+pprint("--------------------------")
 
 tickers_df = util.df(tickers)
 
