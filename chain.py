@@ -53,7 +53,7 @@ chains = ib.reqSecDefOptParams(spx.symbol, "", spx.secType, spx.conId)
 
 chains_df = util.df(chains)
 pprint("chains")
-pprint(chains_)
+pprint(chains_df)
 pprint("--------------------------")
 
 chain = next(c for c in chains if c.tradingClass == "SPXW" and c.exchange == "SMART")
